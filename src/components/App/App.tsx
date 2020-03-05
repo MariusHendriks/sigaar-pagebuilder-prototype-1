@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
 import Add from "../add/index";
 import "../assets/style.css";
 function App() {
@@ -8,7 +8,8 @@ function App() {
       {/* TO:DO nav */}
       <Switch>
         <Route exact path="/">
-          wOWAH
+          Index!
+          <Link to="/add"> Naar add! </Link>
         </Route>
         <Route exact path="/add">
           <Add />

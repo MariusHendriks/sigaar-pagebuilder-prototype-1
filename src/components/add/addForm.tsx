@@ -224,7 +224,9 @@ const AddForm: React.FC = () => {
               <ButtonBack onClick={() => setTabIndex(tabIndex - 1)}>
                 Vorige
               </ButtonBack>
-            ) : null}
+            ) : (
+              <div></div>
+            )}
 
             <ButtonNext onClick={() => setTabIndex(tabIndex + 1)}>
               Volgende
