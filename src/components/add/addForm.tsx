@@ -4,6 +4,7 @@ import { colors, vars, spacings } from "../../vars/vars";
 import { Tabs, TabPanel, TabList, Tab } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Day from "./day";
+import AddPageDone from "./addPageDone";
 
 const Container = styled.div`
   width: 42%;
@@ -90,7 +91,7 @@ const ButtonBack = styled.div`
 `;
 
 const AddForm: React.FC = () => {
-  const [tabIndex, setTabIndex] = useState<number | undefined>(0);
+  const [tabIndex, setTabIndex] = useState<number>(0);
   const [companyName, setCompanyname] = useState<string | undefined>("");
   const [companyAdres, setCompanyAdres] = useState<string | undefined>("");
   const [companyLanguages, setCompanyLanguages] = useState<string | undefined>(
@@ -131,7 +132,7 @@ const AddForm: React.FC = () => {
     state[index] = day;
     setDays(state);
   };
-
+  let currentTabindex = tabIndex;
   return (
     <Container>
       <form>
@@ -193,11 +194,6 @@ const AddForm: React.FC = () => {
                   ): void => setCompanyDescription(ev.target.value)}
                 />
               </div>
-              <ButtonContainer>
-                <ButtonNextStart onClick={() => setTabIndex(1)}>
-                  Volgende
-                </ButtonNextStart>
-              </ButtonContainer>
             </TabPanel>
             <TabPanel>
               <h1>Bedrijf toevoegen</h1>
@@ -211,22 +207,29 @@ const AddForm: React.FC = () => {
               <Day setFunction={setDayData} dayName={"vrijdag"} />
               <Day setFunction={setDayData} dayName={"zaterdag"} />
               <Day setFunction={setDayData} dayName={"zondag"} />
-              <ButtonContainer>
-                <ButtonBack onClick={() => setTabIndex(0)}>Vorige</ButtonBack>
-                <ButtonNext onClick={() => setTabIndex(2)}>Volgende</ButtonNext>
-              </ButtonContainer>
             </TabPanel>
             <TabPanel>
               <h1>Bedrijf toevoegen</h1>
-              Klaar is Kees
-              <ButtonContainer>
-                <ButtonBack onClick={() => setTabIndex(1)}>Vorige</ButtonBack>
-                <ButtonNext onClick={() => alert("joejoe")}>
-                  Volgende
-                </ButtonNext>
-              </ButtonContainer>
+              <AddPageDone
+                days={days}
+                adres={companyAdres}
+                phone={companyPhone}
+                languages={companyLanguages}
+                name={companyName}
+              />
             </TabPanel>
           </Tabs>
+          <ButtonContainer>
+            {tabIndex > 0 ? (
+              <ButtonBack onClick={() => setTabIndex(tabIndex - 1)}>
+                Vorige
+              </ButtonBack>
+            ) : null}
+
+            <ButtonNext onClick={() => setTabIndex(tabIndex + 1)}>
+              Volgende
+            </ButtonNext>
+          </ButtonContainer>
         </Form>
       </form>
     </Container>
