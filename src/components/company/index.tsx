@@ -2,34 +2,29 @@ import React, { useState } from "react";
 import "./company.scss";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useCookies } from "react-cookie";
 
 const Company: React.FC = () => {
   const [signInName, setSignInName] = useState<string>("");
   const [signInEmail, setSignInEmail] = useState<string>("");
   const [signInMessage, setSignInMessage] = useState<string>("");
+
+  const [cookies] = useCookies(["data"]);
+  console.log("cookies :", cookies);
+
   return (
     <div className="company__container">
       <div className="company__block block1">
         <div className="company__block__text">
-          <h2>[NAAM VAN KARTREKKER]</h2>
+          <h2>
+            {typeof cookies.name !== "undefined"
+              ? cookies.name
+              : "Er is geen naam ingevuld..."}
+          </h2>
           <p>
-            Duis vestibulum elit vel neque pharetra vulputate. Quisque
-            scelerisque nisi urna. Duis rutrum non risus in imperdiet. Proin
-            molestie accumsan nulla sit amet mattis. Ut vel tristique neque.
-            Praesent purus eros, aliquet sit amet venenatis in, sodales in odio.
-            Curabitur ac ligula et purus cursus vulputate accumsan sit amet
-            erat. Vestibulum ac mauris ut nisl maximus porta eu a libero. In hac
-            habitasse platea dictumst. Proin augue urna, pretium vel mauris sed,
-            lobortis rutrum libero. Duis vestibulum elit vel neque pharetra
-            vulputate. Quisque scelerisque nisi urna. Duis rutrum non risus in
-            imperdiet. Proin molestie accumsan nulla sit amet mattis. Ut vel
-            tristique neque. Praesent purus eros, aliquet sit amet venenatis in,
-            sodales in odio. Curabitur ac ligula et purus cursus vulputate
-            accumsan sit amet erat. Vestibulum ac mauris ut nisl maximus porta
-            eu a libero. In hac habitasse platea dictumst. Proin augue urna,
-            pretium vel mauris sed, lobortis rutrum libero. Duis vestibulum elit
-            vel neque pharetra vulputate. Quisque scelerisque nisi urna. Duis
-            rutrum non risus in imperdiet. Proin molestie accumsan nulla sit{" "}
+            {typeof cookies.description !== "undefined"
+              ? cookies.description
+              : "Er is geen beschrijving ingevuld"}
           </p>
         </div>
         <div className="company__block__photo">
@@ -47,25 +42,15 @@ const Company: React.FC = () => {
           />
         </div>
         <div className="company__block__text">
-          <h2>[BEDRIJFSNAAM]</h2>
+          <h2>
+            {typeof cookies.companyName !== "undefined"
+              ? cookies.companyName
+              : "Er is geen bedrijfsnaam ingevuld..."}
+          </h2>
           <p>
-            The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax
-            quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick
-            quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs
-            grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright
-            vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim.
-            Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk TV
-            quiz. How quickly daft jumping zebras jolt my wax bed. Flummoxed by
-            job, kvetching W. zaps Iraq. Cozy sphinx waves quart jug of bad
-            milk. A very bad quack might jinx zippy fowls. Few quips galvanized
-            the mock jury box. Quick brown dogs jump over the lazy fox. The jay,
-            pig, fox, zebra, and my wolves quack! Blowzy red vixens fight for a
-            quick jump. Joaquin Phoenix was gazed by MTV for luck. A wizard’s
-            job is to vex chumps quickly in fog. Watch "Jeopardy!", Alex
-            Trebek's fun TV quiz game. The quick, brown fox jumps over a lazy
-            dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox
-            whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for
-            quick jigs vex! Fox nymphs grab quick-jived{" "}
+            {typeof cookies.companyDescription !== "undefined"
+              ? cookies.companyDescription
+              : "Er is geen bedrijfsBeschrijving ingevuld..."}
           </p>
         </div>
       </div>
@@ -75,40 +60,95 @@ const Company: React.FC = () => {
           <div className="company__block__text__opened">
             <div className="company__block__text__opened__day">Maandag</div>
             <div className="company__block__text__opened__time">
-              8:00 - 15:00
+              {typeof cookies.opened !== "undefined"
+                ? cookies.opened[0].from
+                : "Gesloten"}
+              {typeof cookies.opened !== "undefined" ? (
+                " - " + cookies.opened[0].to
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="company__block__text__opened">
             <div className="company__block__text__opened__day">Dinsdag</div>
             <div className="company__block__text__opened__time">
-              8:00 - 15:00
+              {typeof cookies.opened !== "undefined"
+                ? cookies.opened[1].from
+                : "Gesloten"}
+              {typeof cookies.opened !== "undefined" ? (
+                " - " + cookies.opened[1].to
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="company__block__text__opened">
             <div className="company__block__text__opened__day">Woensdag</div>
             <div className="company__block__text__opened__time">
-              8:00 - 15:00
+              {typeof cookies.opened !== "undefined"
+                ? cookies.opened[2].from
+                : "Gesloten"}
+              {typeof cookies.opened !== "undefined" ? (
+                " - " + cookies.opened[2].to
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="company__block__text__opened">
             <div className="company__block__text__opened__day">Donderdag</div>
             <div className="company__block__text__opened__time">
-              8:00 - 15:00
+              {typeof cookies.opened !== "undefined"
+                ? cookies.opened[3].from
+                : "Gesloten"}
+              {typeof cookies.opened !== "undefined" ? (
+                " - " + cookies.opened[3].to
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="company__block__text__opened">
             <div className="company__block__text__opened__day">Vrijdag</div>
             <div className="company__block__text__opened__time">
-              8:00 - 15:00
+              {typeof cookies.opened !== "undefined"
+                ? cookies.opened[4].from
+                : "Gesloten"}
+              {typeof cookies.opened !== "undefined" ? (
+                " - " + cookies.opened[4].to
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="company__block__text__opened">
             <div className="company__block__text__opened__day">Zaterdag</div>
-            <div className="company__block__text__opened__time">Gesloten</div>
+            <div className="company__block__text__opened__time">
+              {" "}
+              {typeof cookies.opened !== "undefined"
+                ? cookies.opened[5].from
+                : "Gesloten"}
+              {typeof cookies.opened !== "undefined" ? (
+                " - " + cookies.opened[5].to
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
           <div className="company__block__text__opened">
             <div className="company__block__text__opened__day">Zondag</div>
-            <div className="company__block__text__opened__time">Gesloten</div>
+            <div className="company__block__text__opened__time">
+              {" "}
+              {typeof cookies.opened !== "undefined"
+                ? cookies.opened[6].from
+                : "Gesloten"}
+              {typeof cookies.opened !== "undefined" ? (
+                " - " + cookies.opened[6].to
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
         </div>
         <div className="company__block__photo">
@@ -122,20 +162,20 @@ const Company: React.FC = () => {
         <div className="company__contact__data">
           <h2>Contact</h2>
           <p>
-            Neem een kijkje bij [bedrijfsnaam]. Wil je op bezoek komen? Wij
-            zullen je ontvangen met open armen!
+            Neem een kijkje bij {cookies.companyName} Wil je op bezoek komen?
+            Wij zullen je ontvangen met open armen!
           </p>
           <div className="company__contact__data__row">
             <div className="company__contact__data__row__icon">
               <FontAwesomeIcon icon={faEnvelope} />
             </div>
-            [Email]
+            {cookies.email}
           </div>
           <div className="company__contact__data__row">
             <div className="company__contact__data__row__icon">
               <FontAwesomeIcon icon={faPhone} />
             </div>
-            [Telefoon]
+            {cookies.phone}
           </div>
           <img
             alt="mockup google"

@@ -3,27 +3,34 @@ import { Tabs, TabPanel, TabList, Tab } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Day from "./day";
 import "./add.scss";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const AddForm: React.FC = () => {
   const [tabIndex, setTabIndex] = useState<number>(0);
+  const [cookies, setCookie, removeCookie] = useCookies(["data"]);
+  const [personalName, setPersonalName] = useState<string>("");
+  const [personalEmail, setPersonalEmail] = useState<string>("");
+  const [personalPhone, setPersonalPhone] = useState<string>("");
+  const [personalDescription, setPersonalDescription] = useState<string>("");
 
-  const [personalName, setPersonalName] = useState<string | undefined>("");
-  const [personalEmail, setPersonalEmail] = useState<string | undefined>("");
-  const [personalPhone, setPersonalPhone] = useState<
-    string | undefined | number
-  >("");
-  const [personalDescription, setPersonalDescription] = useState<
-    string | undefined
-  >("");
-
-  const [companyName, setCompanyname] = useState<string | undefined>("");
-  const [companyAdres, setCompanyAdres] = useState<string | undefined>("");
-  const [companyDescription, setCompanyDescription] = useState<
-    string | undefined
-  >("");
+  const [companyName, setCompanyname] = useState<string>("");
+  const [companyAdres, setCompanyAdres] = useState<string>("");
+  const [companyDescription, setCompanyDescription] = useState<string>("");
 
   const [days, setDays] = useState<dayObj[]>([]);
+
+  const setCookies = () => {
+    setCookie("name", personalName, { path: "/" });
+    setCookie("email", personalEmail, { path: "/" });
+    setCookie("phone", personalPhone, { path: "/" });
+    setCookie("description", personalDescription, { path: "/" });
+    setCookie("companyName", companyName, { path: "/" });
+    setCookie("companyAdres", companyAdres, { path: "/" });
+    setCookie("companyDescription", companyDescription, { path: "/" });
+    setCookie("opened", days, { path: "/" });
+    return <Redirect to={"/company/1"} />;
+  };
 
   const weekDays = [
     "maandag",
@@ -222,9 +229,9 @@ const AddForm: React.FC = () => {
             )}
 
             {tabIndex === 4 ? (
-              <Link to="/company/1">
-                <div className="buttons__next">Bekijk het resultaat</div>
-              </Link>
+              <div onClick={() => setCookies()} className="buttons__next">
+                Bekijk het resultaat
+              </div>
             ) : (
               <div
                 className="buttons__next"
