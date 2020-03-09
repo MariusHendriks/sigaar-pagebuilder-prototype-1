@@ -3,6 +3,7 @@ import { Tabs, TabPanel, TabList, Tab } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Day from "./day";
 import "./add.scss";
+import { Link } from "react-router-dom";
 
 const AddForm: React.FC = () => {
   const [tabIndex, setTabIndex] = useState<number>(0);
@@ -220,12 +221,18 @@ const AddForm: React.FC = () => {
               <div></div>
             )}
 
-            <div
-              className="buttons__next"
-              onClick={() => setTabIndex(tabIndex + 1)}
-            >
-              Volgende stap
-            </div>
+            {tabIndex === 4 ? (
+              <Link to="/company/1">
+                <div className="buttons__next">Bekijk het resultaat</div>
+              </Link>
+            ) : (
+              <div
+                className="buttons__next"
+                onClick={() => setTabIndex(tabIndex + 1)}
+              >
+                Volgende stap
+              </div>
+            )}
           </div>
         </div>
       </form>
