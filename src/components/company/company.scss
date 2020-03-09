@@ -1,0 +1,118 @@
+.company__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  h2 {
+    text-transform: uppercase;
+    color: white;
+    font-size: 36px;
+    width: 100%;
+  }
+  h3 {
+    text-transform: uppercase;
+    color: white;
+    padding-top: 22px;
+    font-size: 24px;
+    width: 100%;
+  }
+  p {
+    color: white;
+  }
+  input {
+    border-radius: 22px;
+    width: 100%;
+    border: none;
+    height: 44px;
+    padding-left: 22px;
+    background: rgba(255, 255, 255, 0.77);
+  }
+  textarea {
+    border-radius: 22px;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    height: fit-content;
+    min-height: 88px;
+    padding-left: 22px;
+    padding-top: 11px;
+    background: rgba(255, 255, 255, 0.77);
+  }
+  .button {
+    cursor: pointer;
+    background: none;
+    margin-top: 15px;
+    border: 2px solid white;
+    height: 46px;
+    width: 183px;
+    text-align: center;
+    line-height: 46px;
+    border-radius: 23px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 18px;
+  }
+}
+.company__block {
+  width: 100%;
+  display: flex;
+  height: 700px;
+  align-items: center;
+  max-height: 700px;
+  &__photo {
+    width: 50%;
+    margin: auto;
+    img {
+      width: 100%;
+      margin: auto;
+      height: 100%;
+    }
+  }
+  &__text {
+    width: 50%;
+    padding: 0 10%;
+    color: white;
+    &__opened {
+      display: flex;
+      font-size: 23px;
+      padding: 10px 0;
+      &__day {
+        width: 20%;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      // &__time {
+      // }
+    }
+  }
+}
+.company__contact {
+  display: flex;
+  color: white;
+  width: 100%;
+  background-color: #c084f4;
+  &__data {
+    padding: 10%;
+    width: 50%;
+    &__row {
+      padding-top: 15px;
+      padding-left: 15px;
+      display: flex;
+      &__icon {
+        padding-right: 15px;
+      }
+    }
+  }
+  &__sign_up {
+    padding: 10%;
+    width: 50%;
+  }
+}
+.block1 {
+  background-color: #94c11f;
+}
+.block2 {
+  background-color: #f38c24;
+}
+.block3 {
+  background-color: #6eaef9;
+}

@@ -1,125 +1,154 @@
 .addform__left {
-    width: 50vw;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
+  width: 50vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 .addform__container {
-    display: flex;
+  display: flex;
 }
 
 .img0 {
-    background-image: url("../assets/img/step1.png");
+  background-image: url("../assets/img/step1.png");
 }
 .img1 {
-    background-image: url("../assets/img/step2.png");
+  background-image: url("../assets/img/step2.png");
 }
 .img2 {
-    background-image: url("../assets/img/step3.png");
+  background-image: url("../assets/img/step3.png");
+}
+.img3 {
+  background-image: url("../assets/img/step4.png");
+}
+.img4 {
+  background-image: url("../assets/img/step5.png");
 }
 .step0 {
-    background-color: #94c11f;
+  background-color: #94c11f;
 }
 
 .step1 {
-    background-color: #f38c00;
+  background-color: #f38c00;
 }
 
 .step2 {
-    background-color: #6eaef9;
+  background-color: #6eaef9;
 }
 
 .step3 {
-    background-color: #c084f4;
+  background-color: #c084f4;
+}
+.step4 {
+  background-color: #6c63ff;
 }
 .addform__right {
-    height: 100vh;
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  height: 100vh;
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .tab {
-    width: 55%;
-    margin-left: 45px;
-    h1 {
-        text-transform: uppercase;
-        color: white;
-        font-size: 36px;
-        font-family: Arial, Helvetica, sans-serif;
-        padding-bottom: 45px;
-    }
-    h3 {
-        text-transform: uppercase;
-        color: white;
-        padding-top: 22px;
-        font-size: 24px;
-        width: 100%;
-    }
-    input {
-        border-radius: 22px;
-        width: 100%;
-        border: none;
-        height: 44px;
-        padding-left: 22px;
-        background: rgba(255, 255, 255, 0.77);
-    }
-    textarea {
-        border-radius: 22px;
-        width: 100%;
-        max-width: 100%;
-        border: none;
-        height: fit-content;
-        min-height: 88px;
-        padding-left: 22px;
-        padding-top: 11px;
-        background: rgba(255, 255, 255, 0.77);
-    }
-}
-.buttons {
-    width: 54%;
-    margin-left: 45px;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
-    .buttons__next {
-        cursor: pointer;
-        border: 2px solid white;
-        height: 46px;
-        width: 183px;
-        text-align: center;
-        line-height: 46px;
-        border-radius: 23px;
-        color: white;
-        text-transform: uppercase;
-        font-size: 18px;
-    }
-    .buttons__previous {
-        cursor: pointer;
-        border: 2px solid white;
-        height: 46px;
-        width: 183px;
-        text-align: center;
-        line-height: 46px;
-        border-radius: 23px;
-        color: white;
-        text-transform: uppercase;
-        font-size: 18px;
-    }
-}
-.timeRow {
-    display: flex;
-    justify-content: space-between;
-    line-height: 44px;
-}
-.to {
-    padding: 0 15px;
+  width: 55%;
+  margin-left: 45px;
+  h1 {
     text-transform: uppercase;
     color: white;
+    font-size: 36px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 45px;
+  }
+  h3 {
+    text-transform: uppercase;
+    color: white;
+    padding-top: 22px;
+    font-size: 24px;
+    width: 100%;
+  }
+  input {
+    border-radius: 22px;
+    width: 100%;
+    border: none;
+    height: 44px;
+    padding-left: 22px;
+    background: rgba(255, 255, 255, 0.77);
+  }
+  textarea {
+    border-radius: 22px;
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    height: fit-content;
+    min-height: 88px;
+    padding-left: 22px;
+    padding-top: 11px;
+    background: rgba(255, 255, 255, 0.77);
+  }
+}
+.buttons {
+  width: 54%;
+  margin-left: 45px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  .buttons__next {
+    cursor: pointer;
+    border: 2px solid white;
+    height: 46px;
+    width: 183px;
+    text-align: center;
+    line-height: 46px;
+    border-radius: 23px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 18px;
+  }
+  .buttons__previous {
+    cursor: pointer;
+    border: 2px solid white;
+    height: 46px;
+    width: 183px;
+    text-align: center;
+    line-height: 46px;
+    border-radius: 23px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 18px;
+  }
+}
+.timeRow {
+  display: flex;
+  justify-content: space-between;
+  line-height: 44px;
+}
+.to {
+  padding: 0 15px;
+  text-transform: uppercase;
+  color: white;
 }
 .timeFromTo {
-    display: flex;
+  display: flex;
 }
 .checkboxRound {
-    border-radius: 50%;
+  border-radius: 50%;
+}
+.googleImg {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.photoBox {
+  display: flex;
+  height: 136px;
+  margin: 15px 0;
+  justify-content: space-between;
+  .uploadIcon {
+    width: 20%;
+  }
+  .uploadText {
+    width: 78%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
 }
