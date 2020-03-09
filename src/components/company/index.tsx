@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import "./company.scss";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-interface Props {
-  nothingYet?: string;
-}
-const Company: React.FC<Props> = ({}) => {
+
+const Company: React.FC = () => {
   const [signInName, setSignInName] = useState<string>("");
   const [signInEmail, setSignInEmail] = useState<string>("");
   const [signInMessage, setSignInMessage] = useState<string>("");
@@ -35,12 +33,18 @@ const Company: React.FC<Props> = ({}) => {
           </p>
         </div>
         <div className="company__block__photo">
-          <img src={require("../assets/img/mockup-profile.png")} />
+          <img
+            alt="mockup profile"
+            src={require("../assets/img/mockup-profile.png")}
+          />
         </div>
       </div>
       <div className="company__block block2">
         <div className="company__block__photo">
-          <img src={require("../assets/img/mockup-company.png")} />
+          <img
+            alt="mockup company"
+            src={require("../assets/img/mockup-company.png")}
+          />
         </div>
         <div className="company__block__text">
           <h2>[BEDRIJFSNAAM]</h2>
@@ -108,7 +112,10 @@ const Company: React.FC<Props> = ({}) => {
           </div>
         </div>
         <div className="company__block__photo">
-          <img src={require("../assets/img/mockup-opened.png")} />
+          <img
+            alt="mockup openingstijden"
+            src={require("../assets/img/mockup-opened.png")}
+          />
         </div>
       </div>
       <div className="company__contact">
@@ -131,6 +138,7 @@ const Company: React.FC<Props> = ({}) => {
             [Telefoon]
           </div>
           <img
+            alt="mockup google"
             className="googleImg"
             src={require("../assets/img/googleMockup.png")}
           />
