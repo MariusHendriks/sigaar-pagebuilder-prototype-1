@@ -1,6 +1,6 @@
 type dayObj = {
   dayName: string;
-  from?: string;
-  to?: string;
-  closed?: boolean;
+  from: string;
+  to: string;
+  closed: boolean;
 };

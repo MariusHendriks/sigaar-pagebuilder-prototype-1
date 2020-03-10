@@ -7,7 +7,7 @@ import { Redirect, Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 const AddForm: React.FC = () => {
-  const [tabIndex, setTabIndex] = useState<number>(0);
+  const [tabIndex, setTabIndex] = useState<number>(2);
   const [cookies, setCookie, removeCookie] = useCookies(["data"]);
   const [personalName, setPersonalName] = useState<string>("");
   const [personalDescription, setPersonalDescription] = useState<string>("");
@@ -20,7 +20,7 @@ const AddForm: React.FC = () => {
   const [companyLink, setCompanyLink] = useState<string>("");
 
   const [days, setDays] = useState<dayObj[]>([]);
-
+  console.log("days :", days);
   const setCookies = () => {
     setCookie("name", personalName, { path: "/" });
     setCookie("email", companyEmail, { path: "/" });
@@ -45,7 +45,10 @@ const AddForm: React.FC = () => {
   weekDays.forEach(dayName => {
     if (days.length <= 6) {
       const newState = days;
-      let day: dayObj = { dayName };
+      const to = "";
+      const from = "";
+      const closed = false;
+      let day: dayObj = { dayName, to, from, closed };
       newState?.push(day);
       if (newState !== days) {
         setDays(newState);
@@ -57,7 +60,8 @@ const AddForm: React.FC = () => {
 
   const setDayData = (day: dayObj) => {
     const index = days.findIndex(d => d.dayName === day.dayName);
-    const state = [...days];
+    let state = [...days];
+
     state[index] = day;
     setDays(state);
   };

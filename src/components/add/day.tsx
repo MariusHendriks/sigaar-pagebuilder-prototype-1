@@ -6,11 +6,13 @@ interface Props {
 }
 
 const Day: React.FC<Props> = ({ dayName, setFunction }) => {
-  const [from, setFrom] = useState<string>("09:00");
-  const [to, setTo] = useState<string>("18:00");
+  const [from, setFrom] = useState<string>("");
+  const [to, setTo] = useState<string>("");
   const [closed, setClosed] = useState<boolean>(false);
-  const [dataPushed, setDatapushed] = useState<boolean>(false);
+
   const pushData = () => {
+    let closedSwith = !closed;
+
     let data: dayObj = {
       dayName,
       from,
@@ -21,10 +23,6 @@ const Day: React.FC<Props> = ({ dayName, setFunction }) => {
     setFunction(data);
   };
 
-  if (!dataPushed) {
-    pushData();
-    setDatapushed(true);
-  }
   return (
     <div className={"time "}>
       <h3>{dayName}</h3>
@@ -32,14 +30,18 @@ const Day: React.FC<Props> = ({ dayName, setFunction }) => {
         <div className={closed ? "timeFromTo isClosed" : "timeFromTo"}>
           <p className="to">Vanaf</p>
           <input
+            disabled={closed}
             type="time"
             value={from}
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {
               setFrom(ev.target.value);
+              pushData();
             }}
           />
+
           <p className="to">tot</p>
           <input
+            disabled={closed}
             type="time"
             value={to}
             onChange={(ev: React.ChangeEvent<HTMLInputElement>): void => {

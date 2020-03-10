@@ -3,7 +3,7 @@ import "./company.scss";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCookies } from "react-cookie";
-
+import OpenedRow from "./OpenedRow";
 const Company: React.FC = () => {
   const [signInName, setSignInName] = useState<string>("");
   const [signInEmail, setSignInEmail] = useState<string>("");
@@ -57,85 +57,14 @@ const Company: React.FC = () => {
       <div className="company__block block3">
         <div className="company__block__text">
           <h2>Openingstijden</h2>
-          <div className="company__block__text__opened">
-            <div className="company__block__text__opened__day">Maandag</div>
-            <div className="company__block__text__opened__time">
-              {typeof cookies.opened !== "undefined"
-                ? cookies.opened[0].from
-                : "Gesloten"}
-              {typeof cookies.opened !== "undefined" ? (
-                " - " + cookies.opened[0].to
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-          <div className="company__block__text__opened">
-            <div className="company__block__text__opened__day">Dinsdag</div>
-            <div className="company__block__text__opened__time">
-              {typeof cookies.opened !== "undefined"
-                ? cookies.opened[1].from
-                : "Gesloten"}
-              {typeof cookies.opened !== "undefined" ? (
-                " - " + cookies.opened[1].to
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-          <div className="company__block__text__opened">
-            <div className="company__block__text__opened__day">Woensdag</div>
-            <div className="company__block__text__opened__time">
-              {typeof cookies.opened !== "undefined"
-                ? cookies.opened[2].from
-                : "Gesloten"}
-              {typeof cookies.opened !== "undefined" ? (
-                " - " + cookies.opened[2].to
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-          <div className="company__block__text__opened">
-            <div className="company__block__text__opened__day">Donderdag</div>
-            <div className="company__block__text__opened__time">
-              {typeof cookies.opened !== "undefined"
-                ? cookies.opened[3].from
-                : "Gesloten"}
-              {typeof cookies.opened !== "undefined" ? (
-                " - " + cookies.opened[3].to
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-          <div className="company__block__text__opened">
-            <div className="company__block__text__opened__day">Vrijdag</div>
-            <div className="company__block__text__opened__time">
-              {typeof cookies.opened !== "undefined"
-                ? cookies.opened[4].from
-                : "Gesloten"}
-              {typeof cookies.opened !== "undefined" ? (
-                " - " + cookies.opened[4].to
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-          <div className="company__block__text__opened">
-            <div className="company__block__text__opened__day">Zaterdag</div>
-            <div className="company__block__text__opened__time">
-              {" "}
-              {typeof cookies.opened !== "undefined"
-                ? cookies.opened[5].from
-                : "Gesloten"}
-              {typeof cookies.opened !== "undefined" ? (
-                " - " + cookies.opened[5].to
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
+          <OpenedRow data={cookies.opened[0]} />
+          <OpenedRow data={cookies.opened[1]} />
+          <OpenedRow data={cookies.opened[2]} />
+          <OpenedRow data={cookies.opened[3]} />
+          <OpenedRow data={cookies.opened[4]} />
+          <OpenedRow data={cookies.opened[5]} />
+          <OpenedRow data={cookies.opened[6]} />
+
           <div className="company__block__text__opened">
             <div className="company__block__text__opened__day">Zondag</div>
             <div className="company__block__text__opened__time">
