@@ -9,7 +9,7 @@ const Day: React.FC<Props> = ({ dayName, setFunction }) => {
   const [from, setFrom] = useState<string>("09:00");
   const [to, setTo] = useState<string>("18:00");
   const [closed, setClosed] = useState<boolean>(false);
-  const [test, setTest] = useState<boolean>(false);
+  const [dataPushed, setDatapushed] = useState<boolean>(false);
   const pushData = () => {
     let data: dayObj = {
       dayName,
@@ -21,15 +21,16 @@ const Day: React.FC<Props> = ({ dayName, setFunction }) => {
     setFunction(data);
   };
 
-  if (!test) {
+  if (!dataPushed) {
     pushData();
-    setTest(true);
+    setDatapushed(true);
   }
   return (
-    <div className="time">
+    <div className={"time "}>
       <h3>{dayName}</h3>
-      <div className="timeRow">
-        <div className="timeFromTo">
+      <div className={"timeRow"}>
+        <div className={closed ? "timeFromTo isClosed" : "timeFromTo"}>
+          <p className="to">Vanaf</p>
           <input
             type="time"
             value={from}
