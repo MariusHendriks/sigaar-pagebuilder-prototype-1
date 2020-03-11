@@ -7,7 +7,7 @@ import { Redirect, Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 const AddForm: React.FC = () => {
-  const [tabIndex, setTabIndex] = useState<number>(2);
+  const [tabIndex, setTabIndex] = useState<number>(0);
   const [cookies, setCookie, removeCookie] = useCookies(["data"]);
   const [personalName, setPersonalName] = useState<string>("");
   const [personalDescription, setPersonalDescription] = useState<string>("");
