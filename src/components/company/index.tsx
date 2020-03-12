@@ -54,39 +54,44 @@ const Company: React.FC = () => {
           </p>
         </div>
       </div>
-      <div className="company__block block3">
-        <div className="company__block__text">
-          <h2>Openingstijden</h2>
-          <OpenedRow data={cookies.opened[0]} />
-          <OpenedRow data={cookies.opened[1]} />
-          <OpenedRow data={cookies.opened[2]} />
-          <OpenedRow data={cookies.opened[3]} />
-          <OpenedRow data={cookies.opened[4]} />
-          <OpenedRow data={cookies.opened[5]} />
-          <OpenedRow data={cookies.opened[6]} />
+      {cookies.zzp ? (
+        <></>
+      ) : (
+        <div className="company__block block3">
+          <div className="company__block__text">
+            <h2>Openingstijden</h2>
+            <OpenedRow data={cookies.opened[0]} />
+            <OpenedRow data={cookies.opened[1]} />
+            <OpenedRow data={cookies.opened[2]} />
+            <OpenedRow data={cookies.opened[3]} />
+            <OpenedRow data={cookies.opened[4]} />
+            <OpenedRow data={cookies.opened[5]} />
+            <OpenedRow data={cookies.opened[6]} />
 
-          <div className="company__block__text__opened">
-            <div className="company__block__text__opened__day">Zondag</div>
-            <div className="company__block__text__opened__time">
-              {" "}
-              {typeof cookies.opened !== "undefined"
-                ? cookies.opened[6].from
-                : "Gesloten"}
-              {typeof cookies.opened !== "undefined" ? (
-                " - " + cookies.opened[6].to
-              ) : (
-                <></>
-              )}
+            <div className="company__block__text__opened">
+              <div className="company__block__text__opened__day">Zondag</div>
+              <div className="company__block__text__opened__time">
+                {" "}
+                {typeof cookies.opened !== "undefined"
+                  ? cookies.opened[6].from
+                  : "Gesloten"}
+                {typeof cookies.opened !== "undefined" ? (
+                  " - " + cookies.opened[6].to
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
           </div>
+          <div className="company__block__photo">
+            <img
+              alt="mockup openingstijden"
+              src={require("../assets/img/mockup-opened.png")}
+            />
+          </div>
         </div>
-        <div className="company__block__photo">
-          <img
-            alt="mockup openingstijden"
-            src={require("../assets/img/mockup-opened.png")}
-          />
-        </div>
-      </div>
+      )}
+
       <div className="company__contact">
         <div className="company__contact__data">
           <h2>Contact</h2>

@@ -11,6 +11,7 @@ const AddForm: React.FC = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["data"]);
   const [personalName, setPersonalName] = useState<string>("");
   const [personalDescription, setPersonalDescription] = useState<string>("");
+  const [zzp, setIsZzp] = useState<boolean>(false);
 
   const [companyEmail, setCompanyEmail] = useState<string>("");
   const [companyPhone, setCompanyPhone] = useState<string>("");
@@ -31,6 +32,7 @@ const AddForm: React.FC = () => {
     setCookie("companyDescription", companyDescription, { path: "/" });
     setCookie("companyLink", companyLink, { path: "/" });
     setCookie("opened", days, { path: "/" });
+    setCookie("zzp", zzp, { path: "/" });
   };
 
   const weekDays = [
@@ -55,7 +57,12 @@ const AddForm: React.FC = () => {
       }
     }
   });
-
+  const handleClickNextTab = (isZzp: boolean) => {
+    setTabIndex(tabIndex + 1);
+    if (isZzp) {
+      setIsZzp(true);
+    }
+  };
   useEffect(() => {}, [days]);
 
   const setDayData = (day: dayObj) => {
@@ -73,6 +80,7 @@ const AddForm: React.FC = () => {
         <div>
           <Tabs selectedIndex={tabIndex} onSelect={index => setTabIndex(index)}>
             <TabList className="none">
+              <Tab></Tab>
               <Tab></Tab>
               <Tab></Tab>
               <Tab></Tab>
@@ -103,6 +111,51 @@ const AddForm: React.FC = () => {
                       ev: React.ChangeEvent<HTMLTextAreaElement>
                     ): void => setPersonalDescription(ev.target.value)}
                   />
+                </div>
+              </div>
+            </TabPanel>
+            {/* Freelancer of niet */}
+            <TabPanel>
+              <div className="freelancerContainer">
+                <h1>Maak een keuze...</h1>
+                <div className="freelancers">
+                  <div className="openContainer">
+                    <img
+                      alt="freelancer"
+                      className="freelancerContainer__img"
+                      src={require("../assets/img/freelance.png")}
+                    />
+                    <h2>Ik ben een freelancer/zzp-er</h2>
+                    <p>Bij deze keuze heb je geen openingstijden</p>
+                    <div
+                      onClick={() => handleClickNextTab(true)}
+                      className="buttons__next freelancerNextButton"
+                    >
+                      Klik hier
+                    </div>
+                  </div>
+
+                  <div className="openContainer">
+                    <img
+                      alt="ondernemer"
+                      className="freelancerContainer__img"
+                      src={require("../assets/img/ondernemer.png")}
+                    />
+                    <h2>Ik ben een ondernemer</h2>
+                    <p>Bij deze keuze heb je wel openingstijden</p>
+                    <div
+                      onClick={() => handleClickNextTab(false)}
+                      className="buttons__next freelancerNextButton"
+                    >
+                      Klik hier
+                    </div>
+                  </div>
+                </div>
+                <div
+                  onClick={() => setTabIndex(tabIndex - 1)}
+                  className="buttons__previous freelancerBackButton "
+                >
+                  Stap Terug
                 </div>
               </div>
             </TabPanel>
@@ -143,17 +196,27 @@ const AddForm: React.FC = () => {
               </div>
             </TabPanel>
             <TabPanel>
-              <div className="tab">
-                <h1>Openingstijden</h1>
-                <h3 className="closed">gesloten</h3>
-                <Day setFunction={setDayData} dayName={"maandag"} />
-                <Day setFunction={setDayData} dayName={"dinsdag"} />
-                <Day setFunction={setDayData} dayName={"woensdag"} />
-                <Day setFunction={setDayData} dayName={"donderdag"} />
-                <Day setFunction={setDayData} dayName={"vrijdag"} />
-                <Day setFunction={setDayData} dayName={"zaterdag"} />
-                <Day setFunction={setDayData} dayName={"zondag"} />
-              </div>
+              {tabIndex === 3 ? (
+                <>{zzp ? setTabIndex(tabIndex + 1) : null}</>
+              ) : (
+                <></>
+              )}
+
+              {zzp ? (
+                <></>
+              ) : (
+                <div className="tab">
+                  <h1>Openingstijden</h1>
+                  <h3 className="closed">gesloten</h3>
+                  <Day setFunction={setDayData} dayName={"maandag"} />
+                  <Day setFunction={setDayData} dayName={"dinsdag"} />
+                  <Day setFunction={setDayData} dayName={"woensdag"} />
+                  <Day setFunction={setDayData} dayName={"donderdag"} />
+                  <Day setFunction={setDayData} dayName={"vrijdag"} />
+                  <Day setFunction={setDayData} dayName={"zaterdag"} />
+                  <Day setFunction={setDayData} dayName={"zondag"} />
+                </div>
+              )}
             </TabPanel>
 
             {/* Contact */}
@@ -247,33 +310,48 @@ const AddForm: React.FC = () => {
               </div>
             </TabPanel>
           </Tabs>
-          <div className="buttons">
-            {tabIndex > 0 ? (
-              <div
-                className="buttons__previous"
-                onClick={() => setTabIndex(tabIndex - 1)}
-              >
-                Vorige
-              </div>
-            ) : (
-              <div></div>
-            )}
+          {tabIndex !== 1 ? (
+            <div className="buttons">
+              {tabIndex > 0 ? (
+                <>
+                  {tabIndex === 5 && zzp ? (
+                    <div
+                      className="buttons__previous"
+                      onClick={() => setTabIndex(tabIndex - 2)}
+                    >
+                      Vorige
+                    </div>
+                  ) : (
+                    <div
+                      className="buttons__previous"
+                      onClick={() => setTabIndex(tabIndex - 1)}
+                    >
+                      Vorige
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div></div>
+              )}
 
-            {tabIndex === 4 ? (
-              <Link to="/company/1">
-                <div onClick={() => setCookies()} className="buttons__next">
-                  Bekijk het resultaat
+              {tabIndex === 4 ? (
+                <Link to="/company/1">
+                  <div onClick={() => setCookies()} className="buttons__next">
+                    Bekijk het resultaat
+                  </div>
+                </Link>
+              ) : (
+                <div
+                  className="buttons__next"
+                  onClick={() => setTabIndex(tabIndex + 1)}
+                >
+                  Volgende stap
                 </div>
-              </Link>
-            ) : (
-              <div
-                className="buttons__next"
-                onClick={() => setTabIndex(tabIndex + 1)}
-              >
-                Volgende stap
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       </form>
     </div>
